@@ -16,13 +16,18 @@ public class ProductManagerTest {
     Product product4 = new Smartphone(4, "Apple", 35_000, "Аиериканская корпорация");
 
 
-    @Test
-    public void ShouldAddProduct() {
+    @BeforeEach
+    public void setup() {
 
         manager.add(product1);
         manager.add(product2);
         manager.add(product3);
         manager.add(product4);
+    }
+
+    @Test
+    public void ShouldAddProduct() {
+
 
         Product[] actual = manager.findAll();
         Product[] expected = {product1, product2, product3, product4};
@@ -34,10 +39,6 @@ public class ProductManagerTest {
 
     public void ShouldSearchByProduct() {
 
-        manager.add(product1);
-        manager.add(product2);
-        manager.add(product3);
-        manager.add(product4);
 
         Product[] actual = manager.searchBy("Самсунг");
         Product[] expected = {product3};
