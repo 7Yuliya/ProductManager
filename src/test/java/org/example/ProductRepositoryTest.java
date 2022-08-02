@@ -10,7 +10,7 @@ public class ProductRepositoryTest {
     Product product2 = new Book(2, "Князь Серебряный", 1_200, "Алексей Константинович Толстой");
     Product product3 = new Smartphone(3, "Самсунг", 15_000, "Южнокорейская группа компаний");
     Product product4 = new Smartphone(4, "Apple", 35_000, "Аиериканская корпорация");
-
+    Product product5 = new Smartphone(5, "Самсунг", 25_000, "Южнокорейская группа компаний");
 
     @Test
     public void test() {
@@ -19,10 +19,11 @@ public class ProductRepositoryTest {
         repo.save(product2);
         repo.save(product3);
         repo.save(product4);
+        repo.save(product5);
         repo.removeById(product2.getId());
 
 
-        Product[] expected = {product4, product3, product1};
+        Product[] expected = {product5, product4, product3, product1};
         Product[] actual = repo.findAll();
 
         assertArrayEquals(expected, actual);
